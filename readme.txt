@@ -1,48 +1,50 @@
-ï»¿=== WP2CSDNBlog ===
+=== WP2CSDNBlog ===
 
 Contributors: xhhjin
 Donate link: http://xuhehuan.com/
-Tags: WP2CSDNBlog, CSDN, æ–‡ç« åŒæ­¥
+Tags: WP2CSDNBlog, CSDN, ÎÄÕÂÍ¬²½
 Requires at least: 2.7
 Tested up to: 4.1.5
 Stable tag: 1.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-åŒæ­¥å‘å¸ƒ WordPress åšå®¢æ—¥å¿—åˆ°CSDNåšå®¢ï¼Œä¹Ÿå¯ç”¨åœ¨æ‰€æœ‰æ”¯æŒ Metaweblog API çš„åšå®¢ç³»ç»Ÿä¸­ï¼Œåˆæ¬¡å®‰è£…å¿…é¡»è®¾ç½®åæ‰èƒ½ä½¿ç”¨ã€‚
+Í¬²½·¢²¼ WordPress ²©¿ÍÈÕÖ¾µ½CSDN²©¿Í£¬Ò²¿ÉÓÃÔÚËùÓĞÖ§³Ö Metaweblog API µÄ²©¿ÍÏµÍ³ÖĞ£¬°²×°ºóĞèÒªÏÈÉèÖÃÏÂ¡£
 
 == Description ==
 
-Version 1.1 æ”¯æŒåŠŸèƒ½
+Version 1.1 Ö§³Ö¹¦ÄÜ
 
-1. æ”¯æŒå‘å¸ƒwordpressçš„åšæ–‡åˆ°CSDNåšå®¢
+1. Ö§³Ö·¢²¼wordpressµÄ²©ÎÄµ½CSDN²©¿Í
 
-2. æ”¯æŒå°†Wordpressä¸­æ–‡ç« é“¾æ¥å‘å¸ƒåˆ°CSDNåšå®¢
+2. Ö§³Ö½«WordpressÖĞÎÄÕÂÁ´½Ó·¢²¼µ½CSDN²©¿Í
 
-3. æ”¯æŒå‘å¸ƒæ–‡ç« çš„è‡ªåŠ¨å½’ç±»
+3. Ö§³Ö·¢²¼ÎÄÕÂµÄ×Ô¶¯¹éÀà
 
 == Installation ==
 
-1. ä¸Šä¼ æ•´ä¸ªæ–‡ä»¶å¤¹ wp2csdnblog åˆ° `/wp-content/plugins/` ç›®å½•
+1. ÉÏ´«Õû¸öÎÄ¼ş¼Ğ wp2csdnblog µ½ `/wp-content/plugins/` Ä¿Â¼
 
-2. åå°æ§åˆ¶é¢æ¿"æ’ä»¶(Plugins)"ä¸­æ¿€æ´» wp2csdnblog æ’ä»¶
+2. ºóÌ¨¿ØÖÆÃæ°å"²å¼ş(Plugins)"ÖĞ¼¤»î wp2csdnblog ²å¼ş
 
-3. åå°æ§åˆ¶é¢æ¿"é…ç½®(Settings)->wp2csdnblog"ä¸­é…ç½®CSDNè´¦æˆ·ä¿¡æ¯
+3. ºóÌ¨¿ØÖÆÃæ°å"ÅäÖÃ(Settings)->wp2csdnblog"ÖĞÅäÖÃCSDNÕË»§ĞÅÏ¢
 
 
 == Screenshots == 
 
-1. è½¯ä»¶é…ç½®ç•Œé¢ Screenshots.png
+1. Èí¼şÅäÖÃ½çÃæ Screenshots.png
 
 
 == Frequently Asked Questions == 
 
-æš‚æ— 
+ÔİÎŞ
 
 == Changelog ==
 
 = 1.1 =
-* åˆçº§ç‰ˆæœ¬
+* ³õ¼¶°æ±¾
 
 == Upgrade Notice ==
 
 = 1.1 =
-* åˆçº§ç‰ˆæœ¬
+* ³õ¼¶°æ±¾
