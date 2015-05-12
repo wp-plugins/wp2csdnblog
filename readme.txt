@@ -32,7 +32,7 @@ Version 1.1 支持功能
 
 == Screenshots ==
 
-1. 软件配置界面
+1. **插件配置界面** - 设置账户信息 
 
 
 == Frequently Asked Questions == 
