@@ -1,4 +1,4 @@
-=== WP2CSDNBlog ===
+﻿=== WP2CSDNBlog ===
 
 Contributors: xhhjin
 Donate link: http://xuhehuan.com/
@@ -30,9 +30,9 @@ Version 1.1 支持功能
 3. 后台控制面板"配置(Settings)->wp2csdnblog"中配置CSDN账户信息
 
 
-== Screenshots == 
+== Screenshots ==
 
-1. 软件配置界面 Screenshots.png
+1. 软件配置界面
 
 
 == Frequently Asked Questions == 
