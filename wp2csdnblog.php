@@ -195,7 +195,6 @@ function publish_article_to_csdnblog($post_ID)
 		//检查账户是否已设置
 		if(strlen($username) > 3 && strlen($password) > 3) 
 		{
-			
 			mwb_newPost($blogapiurl, $username, $password, $content);
 		}
 		
