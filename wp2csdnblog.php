@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP2CSDNBlog
 Plugin URI:  http://xuhehuan.com/2027.html
-Version:     1.1
+Version:     1.2
 Author:      xhhjin
 Author URI:  http://xuhehuan.com
 Description: 同步发布 WordPress 日志到 CSDN 博客，也可用在所有支持 Metaweblog API 的博客系统中
@@ -40,6 +40,10 @@ function register_wp2csdnblog_settings()
 	register_setting( 'WP2CSDNBlog-Settings', 'wp2csdnblog_user' );
 	register_setting( 'WP2CSDNBlog-Settings', 'wp2csdnblog_password' );
 	register_setting( 'WP2CSDNBlog-Settings', 'wp2csdnblog_url' );
+	register_setting( 'WP2CSDNBlog-Settings', 'wp2sinablog_user' );
+	register_setting( 'WP2CSDNBlog-Settings', 'wp2sinablog_pass' );
+	register_setting( 'WP2CSDNBlog-Settings', 'wp2neteaseblog_user' );
+	register_setting( 'WP2CSDNBlog-Settings', 'wp2neteaseblog_pass' );
 	register_setting( 'WP2CSDNBlog-Settings', 'wp2csdnblog_issync' );
 	register_setting( 'WP2CSDNBlog-Settings', 'wp2csdnblog_isaddlink' );
 }
@@ -81,6 +85,22 @@ function wp2csdnblog_setting_page()
 		<th scope="row">博客同步地址(URL)</th>
 		<td>
 			<input name="wp2csdnblog_url" type="text" id="wp2csdnblog_url" value="<?php form_option('wp2csdnblog_url'); ?>" class="regular-text" />
+		</td>
+		</tr>
+		
+		<tr valign="top">
+		<th scope="row">新浪博客（可选）</th>
+		<td>
+			用户名：<input name="wp2sinablog_user" type="text" id="wp2sinablog_user" value="<?php form_option('wp2sinablog_user'); ?>" />
+			密码：<input name="wp2sinablog_pass" type="password" id="wp2sinablog_pass" value="<?php form_option('wp2sinablog_pass'); ?>" />
+		</td>
+		</tr>
+		
+		<tr valign="top">
+		<th scope="row">网易博客（可选）</th>
+		<td>
+			用户名：<input name="wp2neteaseblog_user" type="text" id="wp2neteaseblog_user" value="<?php form_option('wp2neteaseblog_user'); ?>" />
+			密码：<input name="wp2neteaseblog_pass" type="password" id="wp2neteaseblog_pass" value="<?php form_option('wp2neteaseblog_pass'); ?>" />
 		</td>
 		</tr>
 		
@@ -159,6 +179,15 @@ function publish_article_to_csdnblog($post_ID)
 			$category[] = $value->cat_name;
 		}
 		
+		require_once(dirname(__FILE__).'/php/xmlrpc.php');
+		require_once(dirname(__FILE__).'/php/metaweblog.php');
+		$content = array(
+			'title' => $title,
+			'description' => $content,
+			'categories' => $category,
+			'dateCreated' => new xmlrpcval(Date('Ymd\TH:i:s'), "dateTime.iso8601"),
+		);
+		
 		$username = get_option('wp2csdnblog_user');
 		$password = get_option('wp2csdnblog_password');
 		$blogapiurl = get_option('wp2csdnblog_url');
@@ -166,15 +195,25 @@ function publish_article_to_csdnblog($post_ID)
 		//检查账户是否已设置
 		if(strlen($username) > 3 && strlen($password) > 3) 
 		{
-			require_once(dirname(__FILE__).'/php/xmlrpc.php');
-			require_once(dirname(__FILE__).'/php/metaweblog.php');
 			
-			$content = array(
-				'title' => $title,
-				'description' => $content,
-				'categories' => $category,
-				'dateCreated' => new xmlrpcval(Date('Ymd\TH:i:s'), "dateTime.iso8601"),
-			);
+			mwb_newPost($blogapiurl, $username, $password, $content);
+		}
+		
+		//新浪博客
+		$username = get_option('wp2sinablog_user');
+		$password = get_option('wp2sinablog_pass');
+		$blogapiurl = "http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php";
+		if(strlen($username) > 3 && strlen($password) > 3) 
+		{
+			mwb_newPost($blogapiurl, $username, $password, $content);
+		}
+		
+		//网易博客
+		$username = get_option('wp2neteaseblog_user');
+		$password = get_option('wp2neteaseblog_pass');
+		$blogapiurl = "http://os.blog.163.com/word/";
+		if(strlen($username) > 3 && strlen($password) > 3) 
+		{	
 			mwb_newPost($blogapiurl, $username, $password, $content);
 		}
 	}
