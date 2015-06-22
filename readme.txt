@@ -5,7 +5,7 @@ Donate link: http://xuhehuan.com/
 Tags: WP2CSDNBlog, CSDN, 文章同步
 Requires at least: 2.7
 Tested up to: 4.2.2
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * 支持发布wordpress的博文到CSDN博客或支持 Metaweblog API 的博客
 * 支持将Wordpress中文章链接发布到对应博客
 * 支持发布文章的自动归类
+* 支持wordpress的定时发布文章
 
 == Installation ==
 
@@ -40,6 +41,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 暂无
 
 == Changelog ==
+
+= 1.3 =
+
+* 支持发布wordpress的定时发布文章到设置的博客
 
 = 1.2 =
 

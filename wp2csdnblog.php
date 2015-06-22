@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP2CSDNBlog
 Plugin URI:  http://xuhehuan.com/2027.html
-Version:     1.2
+Version:     1.3
 Author:      xhhjin
 Author URI:  http://xuhehuan.com
 Description: 同步发布 WordPress 日志到 CSDN 博客，也可用在所有支持 Metaweblog API 的博客系统中
@@ -26,6 +26,9 @@ Description: 同步发布 WordPress 日志到 CSDN 博客，也可用在所有�
 <?php
 add_action('admin_menu', 'menu_add_wp2csdnblog_setting');
 add_action('publish_post', 'publish_article_to_csdnblog');
+add_action('publish_future_post', 'publish_article_to_csdnblog'); 
+//add_action('future_to_publish', 'publish_article_to_csdnblog');
+//add_action('save_post', 'publish_article_to_csdnblog');
 add_action('xmlrpc_public_post', 'publish_article_to_csdnblog');
 
 function menu_add_wp2csdnblog_setting() 
@@ -146,7 +149,8 @@ function publish_article_to_csdnblog($post_ID)
 	
 	$post = get_post($post_ID);
 	//new article
-	if($post->post_type == "post" && ($post->post_date == $post->post_modified))
+	if($post->post_type == "post" && (('publish_post' === current_filter() && $post->post_date == $post->post_modified) || 
+		'publish_post' !== current_filter()))
 	{
 		//get title
 		$title = $post->post_title;
