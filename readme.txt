@@ -44,8 +44,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 = 1.4 =
 
-* 完善定时发布功能
-* 完善同步文章格式
+* 完善对定时发布功能的支持
+* 完善同步文章排版格式问题
 
 = 1.3 =
 
