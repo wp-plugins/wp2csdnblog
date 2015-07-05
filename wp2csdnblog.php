@@ -2,7 +2,7 @@
 /*
 Plugin Name: WP2CSDNBlog
 Plugin URI:  http://xuhehuan.com/2027.html
-Version:     1.3
+Version:     1.4
 Author:      xhhjin
 Author URI:  http://xuhehuan.com
 Description: 同步发布 WordPress 日志到 CSDN 博客，也可用在所有支持 Metaweblog API 的博客系统中
@@ -25,11 +25,12 @@ Description: 同步发布 WordPress 日志到 CSDN 博客，也可用在所有�
 ?>
 <?php
 add_action('admin_menu', 'menu_add_wp2csdnblog_setting');
-add_action('publish_post', 'publish_article_to_csdnblog');
-add_action('publish_future_post', 'publish_article_to_csdnblog'); 
+//add_action('publish_post', 'publish_article_to_csdnblog');
+//add_action('publish_future_post', 'publish_article_to_csdnblog'); 
 //add_action('future_to_publish', 'publish_article_to_csdnblog');
 //add_action('save_post', 'publish_article_to_csdnblog');
-add_action('xmlrpc_public_post', 'publish_article_to_csdnblog');
+//add_action('xmlrpc_public_post', 'publish_article_to_csdnblog');
+add_action('transition_post_status', 'transition_post_to_csdnblog', 10, 3);
 
 function menu_add_wp2csdnblog_setting() 
 {
@@ -175,7 +176,9 @@ function publish_article_to_csdnblog($post_ID)
 			$content .= "<br/><br/>查看原文：<a href=".get_permalink($post_ID).">".get_permalink($post_ID)."</a>";
 		}
 		//<pre> content </pre>
-		$content = "<pre>" . $content . "</pre>";
+		//$content = "<pre>" . $content . "</pre>";
+		$content= wp_richedit_pre($content);
+		$content=htmlspecialchars_decode($content);
 		
 		$categories = get_the_category($post_ID);
 		$category = array();
@@ -222,5 +225,11 @@ function publish_article_to_csdnblog($post_ID)
 	}
 	
 	return $post_ID;
+}
+
+function transition_post_to_csdnblog( $new_status, $old_status, $post ) {
+	if ($old_status != 'publish' && $new_status == 'publish' && get_post_type( $post ) == 'post') {
+		publish_article_to_csdnblog($post->ID);
+	}
 }
 ?>
